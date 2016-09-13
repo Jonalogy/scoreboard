@@ -19,6 +19,8 @@ $(document).ready(function(){
 function listAll(){
   $.get('http://localhost:3000/entries',function(data){
 
+      $('#board').empty()//Drops all child elements
+
       for(i=0; i<data.length; i++){
         var rowNew = $('<div>').attr('id','row'+data[i]['id']).attr('class','row');
         var idCreate = $('<div>').text(data[i]['id']).attr('class','cell');
@@ -29,7 +31,12 @@ function listAll(){
         rowNew.appendTo($('#board'));
 
         $('<button>').attr('type','button').attr('id','editButt'+data[i].id).text('Edit').appendTo(rowNew);
-        $('<button>').attr('type','button').attr('id','deleteButt'+data[i].id).text('Delete').appendTo(rowNew);
+        $('<button>').attr('type','button').attr('id','deleteButt'+data[i].id).attr('value',data[i].id).text('Delete').appendTo(rowNew);
+
+        $('#deleteButt'+data[i].id).on('click',function(event){
+          var deleteData = event.target.value;
+          remove(deleteData);
+        });
       }// End of for loop
 
     });//End of GET route for /entries
@@ -59,3 +66,13 @@ function addNewScore(newDataSend){
   }//END of listNewEntry()
 
 }//END of addNewScore()
+
+function remove(deleteData){
+  $.ajax({
+    url:'http://localhost:3000/entries/'+deleteData,
+    type: 'DELETE'
+  }).done(function(data){
+    listAll();
+  });
+
+}
