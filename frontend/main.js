@@ -48,7 +48,7 @@ function addNewScore(newDataSend){
     type: 'POST',
     data: newDataSend
     }).done(function(server_data){
-    listNewEntry(server_data);
+    listAll();
     })
 
 
