@@ -31,6 +31,8 @@ function listAll(){
       var scoreNew = $('<p>').text(data[i].score);
       var scoreHolder = scoreNew.appendTo($('<div>'));
       scoreHolder.appendTo($('#scoreCol'));
+
+      $('<button>').attr('type','button').attr('id','id'+data[i]['id']).text('Edit').appendTo($('#controlCol'));
     }
     });//End of GET route for /entries
 }
