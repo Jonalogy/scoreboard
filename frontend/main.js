@@ -19,21 +19,36 @@ $(document).ready(function(){
 function listAll(){
   $.get('http://localhost:3000/entries',function(data){
 
+    // for(i=0; i<data.length; i++){
+    //   var idCreate = $('<p>').text(data[i]['id']);
+    //   var idHolder = idCreate.appendTo($('<div>').attr('class','cell'));
+    //   idHolder.appendTo($('#idCol'));
+    //
+    //   var nameNew = $('<p>').text(data[i].name);
+    //   var nameHolder = nameNew.appendTo($('<div>'));
+    //   nameHolder.appendTo($('#nameCol'));
+    //
+    //   var scoreNew = $('<p>').text(data[i].score);
+    //   var scoreHolder = scoreNew.appendTo($('<div>'));
+    //   scoreHolder.appendTo($('#scoreCol'));
+    //
+    //   $('<button>').attr('type','button').attr('id','id'+data[i]['id']).attr('class','entryCtrl').text('Edit').appendTo($('#controlCol'));
+    // }
+
     for(i=0; i<data.length; i++){
-      var idCreate = $('<p>').text(data[i]['id']);
-      var idHolder = idCreate.appendTo($('<div>'));
-      idHolder.appendTo($('#idCol'));
+      var rowNew = $('<div>').attr('id','row'+data[i]['id']).attr('class','row');
 
-      var nameNew = $('<p>').text(data[i].name);
-      var nameHolder = nameNew.appendTo($('<div>'));
-      nameHolder.appendTo($('#nameCol'));
+      var idCreate = $('<div>').text(data[i]['id']).attr('class','cell');
 
-      var scoreNew = $('<p>').text(data[i].score);
-      var scoreHolder = scoreNew.appendTo($('<div>'));
-      scoreHolder.appendTo($('#scoreCol'));
+      var nameNew = $('<div>').text(data[i].name).attr('class','cell');
 
-      $('<button>').attr('type','button').attr('id','id'+data[i]['id']).text('Edit').appendTo($('#controlCol'));
+      var scoreNew = $('<div>').text(data[i].score).attr('class','cell');
+
+      rowNew.append(idCreate).append(nameNew).append(scoreNew);
+      rowNew.appendTo($('#board'));
     }
+
+
     });//End of GET route for /entries
 }
 
