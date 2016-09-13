@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src='main.js'>
+    </script>
+    <title>Test Index</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id='scoreboard' class="scoreboard">
+        <h1>Scoreboard!!!</h1>
+      </div>
+      <div id="entryForm">
+        <form id='newEntry' action="index.html" method="post">
+          <input id='newName' type="text" name="name" value="">
+          <input id='newScore' type="text" name="score" value="">
+          <button id='add' type="submit" name="add">Add Score</button>
+        </form>
+      </div>
+
+      <div id="board">
+        <div id='idCol' class='columns'>
+          <h3>id</h3>
+        </div>
+        <div id="nameCol" class='columns'>
+          <h3>name</h3>
+        </div>
+        <div id='scoreCol' class="columns">
+          <h3>score</h3>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

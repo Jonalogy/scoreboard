@@ -1,0 +1,18 @@
+#container{
+  text-align: center;
+}
+
+#entryForm{
+  border: 1px green dashed;
+}
+
+#scoreboard{
+  border: 1px red dotted;
+
+}
+
+.columns{
+  border: 1px blue dotted;
+  display: inline-block;
+  width: 200px;
+}
